@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <style>
+        #wrapper{
+            width: 700px;
+            margin: 0 auto;
+        }
+        body {
+            font-size: 180%;
+        }
+
+        input {
+            padding: 15px;
+            font-size: 25px;
+            border-radius: 5px;
+            border: 1px solid grey;
+            width: 520px;
+        }
+
+        label {
+            display: inline-block;
+            width: 170px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 14px 20px;
+            cursor: pointer;
+            border: none;
+            margin-top: 20px;
+            width: 100%;
+            border-radius: 5px;
+        }
+        .error{
+            color: red;
+            text-align: left;
+
+        }
+    </style>
+</head>
+
+<body>
+  <div id="error">
+
+  </div>
+    <div id="wrapper">
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="text" name="email" id="email" placeholder=" Your email">
+        </div>
+        <div class="form-group">
+            <label for="phonephone">Telefon</label>
+            <input type="text" name="phonephone" id="phone" placeholder=" Your phone">
+        </div>
+        <div class="form-group">
+            <label for="Password">Password</label>
+            <input type="text" name="Password" id="Password" placeholder=" Your Password">
+        </div>
+        <div class="form-group">
+            <label for="email">Password agin</label>
+            <input type="text" name="repasword" id="repasword" placeholder=" Your Password again">
+        </div>
+        <button id="btn">Kaydet</button>
+    </div>
+    <script>
+        $("document").ready(function(){
+            
+           
+            $("#btn").click(function(){
+                function isEmail(){
+                const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                return re.test(email);
+            }
+                var errormessage="";
+                if($("#email").val()=="")
+                errormessage+="<p>Email alani zorunlu</p>";
+                if(isEmail($("#email").val()==true)){
+                    errormessage+="<p>Email alani dogru deyil</p>";
+                }
+                if($("#phone").val()=="")
+                errormessage+="<p>telefon alani zorunlu</p>";
+                if($("#Password").val()=="")
+                errormessage+="<p>Parola alani zorunlu</p>";
+                if($("#Password").val()!=$("#repasword").val())
+                errormessage+="<p>Parollar eslesmir</p>";
+
+
+                if(errormessage!=""){
+                    $("#error").html(errormessage);
+                }
+                
+                
+            })
+        });
+    </script>
+</body>
+
+</html>
